@@ -1,0 +1,16 @@
+<section>
+  <h1>{{subtitle}}</h1>
+  <p>Book your next escape with one click.</p>
+</section>
+
+<div class="trip-grid">
+  {{#each trips}}
+    <article class="trip-card">
+      <img src="{{image}}" alt="{{title}}">
+      <h2>{{title}}</h2>
+      <p>{{nights}} nights</p>
+      <p>${{price}}</p>
+      <a href="/contact.html" class="btn">Request Info</a>
+    </article>
+  {{/each}}
+</div>
