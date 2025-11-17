@@ -1,12 +1,14 @@
 const path = require('path');
 
-// Load trips.json
+// Load JSON data once using require
 const tripsData = require(path.join(__dirname, '../../trips.json'));
 
 const travelList = (req, res) => {
   res.render('travel', {
     title: 'Travlr Getaways',
-    trips: tripsData.trips
+    subtitle: 'Plan your next adventure',
+    trips: tripsData.trips,
+    year: new Date().getFullYear()
   });
 };
 

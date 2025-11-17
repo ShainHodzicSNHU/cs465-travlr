@@ -1,0 +1,25 @@
+{
+  "trips": [
+    {
+      "code": "BALI01",
+      "name": "Bali Test Trip",
+      "length": "7 nights",
+      "price": 1899,
+      "summary": "Relax on the beaches of Bali."
+    },
+    {
+      "code": "EUROTRIP",
+      "name": "European Explorer",
+      "length": "10 nights",
+      "price": 2999,
+      "summary": "Visit Paris, Rome, and Barcelona."
+    },
+    {
+      "code": "REEF01",
+      "name": "Coral Reef Escape",
+      "length": "5 nights",
+      "price": 1299,
+      "summary": "Dive among beautiful coral reefs."
+    }
+  ]
+}

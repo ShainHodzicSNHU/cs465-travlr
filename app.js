@@ -1,34 +1,33 @@
-const path = require('path');
 const express = require('express');
+const path = require('path');
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 
+const routes = require('./app_server/routes/index');
+
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// logging
-app.use(morgan('dev'));
-
-// view engine setup
+// View engine setup
 app.engine('hbs', engine({
   extname: 'hbs',
   layoutsDir: path.join(__dirname, 'app_server', 'views', 'layouts'),
   partialsDir: path.join(__dirname, 'app_server', 'views', 'partials'),
-  defaultLayout: 'main'
+  defaultLayout: 'layout'
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// static files
-app.use(express.static(path.join(__dirname, 'public')));
+// Logging
+app.use(morgan('dev'));
 
-// routes (MVC)
-const routes = require('./app_server/routes/index');
+// Routes first
 app.use('/', routes);
 
-// default root redirect to /travel for rubric testing
-app.get('/', (_req, res) => res.redirect('/travel'));
+// Static files after routes
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => {
-  console.log(`Travlr server running at http://localhost:${PORT}`);
+// Start server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Travlr server running at http://localhost:${port}`);
 });
