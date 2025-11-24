@@ -1,34 +1,44 @@
-const path = require('path');
 const express = require('express');
+const path = require('path');
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 
+// HTML routes (do not depend on Trip model)
+const routes = require('./app_server/routes/index');
+
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// logging
-app.use(morgan('dev'));
+// 1) Connect to MongoDB
+require('./app_server/models/db');          // your existing DB connection file
 
-// view engine setup
+// 2) Register the Trip schema so Mongoose knows about the "Trip" model
+require('./app_api/models/travlr');
+
+// 3) AFTER the model is registered, load the API routes
+const apiRoutes = require('./app_api/routes/index');
+
+// VIEW ENGINE SETUP
 app.engine('hbs', engine({
   extname: 'hbs',
   layoutsDir: path.join(__dirname, 'app_server', 'views', 'layouts'),
   partialsDir: path.join(__dirname, 'app_server', 'views', 'partials'),
-  defaultLayout: 'main'
+  defaultLayout: 'layout'
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// static files
+// LOGGING
+app.use(morgan('dev'));
+
+// ROUTES
+app.use('/', routes);        // HTML pages
+app.use('/api', apiRoutes);  // JSON API
+
+// STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
 
-// routes (MVC)
-const routes = require('./app_server/routes/index');
-app.use('/', routes);
-
-// default root redirect to /travel for rubric testing
-app.get('/', (_req, res) => res.redirect('/travel'));
-
-app.listen(PORT, () => {
-  console.log(`Travlr server running at http://localhost:${PORT}`);
+// START SERVER
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Travlr server running at http://localhost:${port}`);
 });

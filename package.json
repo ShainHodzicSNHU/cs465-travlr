@@ -22,10 +22,10 @@
   "dependencies": {
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
+    "mongoose": "^9.0.0",
     "morgan": "^1.10.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }
-

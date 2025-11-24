@@ -1,25 +1,22 @@
-{
-  "trips": [
-    {
-      "code": "BALI01",
-      "name": "Bali Test Trip",
-      "length": "7 nights",
-      "price": 1899,
-      "summary": "Relax on the beaches of Bali."
-    },
-    {
-      "code": "EUROTRIP",
-      "name": "European Explorer",
-      "length": "10 nights",
-      "price": 2999,
-      "summary": "Visit Paris, Rome, and Barcelona."
-    },
-    {
-      "code": "REEF01",
-      "name": "Coral Reef Escape",
-      "length": "5 nights",
-      "price": 1299,
-      "summary": "Dive among beautiful coral reefs."
-    }
-  ]
-}
+[
+  {
+    "code": "BALI1",
+    "name": "Bali Getaway",
+    "length": 7,
+    "start": "2025-04-20",
+    "resort": "Ocean Breeze",
+    "perPerson": 2599,
+    "image": "bali.jpg",
+    "description": "A tropical escape in Bali."
+  },
+  {
+    "code": "HAW1",
+    "name": "Hawaii Adventure",
+    "length": 5,
+    "start": "2025-07-12",
+    "resort": "Sunset Resort",
+    "perPerson": 1999,
+    "image": "hawaii.jpg",
+    "description": "A warm beach getaway in Hawaii."
+  }
+]
