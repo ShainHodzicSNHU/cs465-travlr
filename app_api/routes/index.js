@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const ctrlTrips = require('../controllers/trips');
 
-const tripsController = require('../controllers/trips');
+// GET all trips
+router.get('/trips', ctrlTrips.tripsList);
 
-// Base: /api
-router.get('/trips', tripsController.tripsList);
+// GET single trip by ID
+router.get('/trips/:tripId', ctrlTrips.tripsFindById);
 
 module.exports = router;
