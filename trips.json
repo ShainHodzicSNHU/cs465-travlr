@@ -1,0 +1,22 @@
+[
+  {
+    "code": "BALI1",
+    "name": "Bali Getaway",
+    "length": 7,
+    "start": "2025-04-20",
+    "resort": "Ocean Breeze",
+    "perPerson": 2599,
+    "image": "bali.jpg",
+    "description": "A tropical escape in Bali."
+  },
+  {
+    "code": "HAW1",
+    "name": "Hawaii Adventure",
+    "length": 5,
+    "start": "2025-07-12",
+    "resort": "Sunset Resort",
+    "perPerson": 1999,
+    "image": "hawaii.jpg",
+    "description": "A warm beach getaway in Hawaii."
+  }
+]

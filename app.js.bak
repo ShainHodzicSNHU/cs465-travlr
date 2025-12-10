@@ -8,8 +8,6 @@ const app = express();
 
 require('./app_server/models/db');
 require('./app_api/models/travlr');
-require('./app_api/models/user'); 
-
 
 const routes = require('./app_server/routes/index');
 const apiRoutes = require('./app_api/routes/index');

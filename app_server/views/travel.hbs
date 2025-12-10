@@ -1,16 +1,9 @@
-<section>
-  <h1>{{subtitle}}</h1>
-  <p>Book your next escape with one click.</p>
-</section>
+<h1>Travel Packages</h1>
 
-<div class="trip-grid">
-  {{#each trips}}
-    <article class="trip-card">
-      <img src="{{image}}" alt="{{title}}">
-      <h2>{{title}}</h2>
-      <p>{{nights}} nights</p>
-      <p>${{price}}</p>
-      <a href="/contact.html" class="btn">Request Info</a>
-    </article>
-  {{/each}}
-</div>
+{{#each trips}}
+    <h2>{{this.name}}</h2>
+    <p><strong>Code:</strong> {{this.code}}</p>
+    <p><strong>Length:</strong> {{this.length}} nights</p>
+    <p>{{this.description}}</p>
+    <p><strong>Price:</strong> ${{this.price}}</p>
+{{/each}}

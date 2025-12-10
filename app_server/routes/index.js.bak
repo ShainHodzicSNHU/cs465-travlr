@@ -3,9 +3,9 @@ const router = express.Router();
 
 const travelerCtrl = require('../controllers/traveler');
 
-// Home route: just redirect to /travel
+// Home route (index page)
 router.get('/', (req, res) => {
-  res.redirect('/travel');
+  res.render('index', { title: 'Travlr Getaways' });
 });
 
 // Travel route
