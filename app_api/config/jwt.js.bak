@@ -1,0 +1,9 @@
+const expressJwt = require('express-jwt');
+
+const auth = expressJwt({
+  secret: process.env.JWT_SECRET || 'travlr-secret',
+  algorithms: ['HS256'],
+  requestProperty: 'payload'
+});
+
+module.exports = { auth };

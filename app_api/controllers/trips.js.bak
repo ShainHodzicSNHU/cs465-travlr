@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Trip = mongoose.model('trips');
+const Trip = mongoose.model('Trip');
 
 // GET /api/trips
 const tripsList = async (req, res) => {

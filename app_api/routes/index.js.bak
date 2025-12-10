@@ -1,9 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const ctrlTrips = require('../controllers/trips');
 
-const tripsController = require('../controllers/trips');
+// /api/trips
+router
+  .route('/trips')
+  .get(ctrlTrips.tripsList)
+  .post(ctrlTrips.tripsCreate);
 
-// Base: /api
-router.get('/trips', tripsController.tripsList);
+// /api/trips/:tripId
+router
+  .route('/trips/:tripId')
+  .get(ctrlTrips.tripsFindById)
+  .put(ctrlTrips.tripsUpdateOne)
+  .delete(ctrlTrips.tripsDeleteOne);
 
 module.exports = router;

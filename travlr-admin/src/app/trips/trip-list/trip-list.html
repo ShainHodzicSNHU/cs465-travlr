@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Trips</h2>
+  <button class="btn btn-success" (click)="onAddTrip()">Add Trip</button>
+</div>
+
+<div *ngIf="trips.length; else noTrips">
+  <div class="card mb-2" *ngFor="let trip of trips">
+    <div class="card-body">
+      <h5>{{ trip.name }}</h5>
+      <p>{{ trip.description }}</p>
+
+      <button class="btn btn-primary btn-sm me-2" (click)="onEditTrip(trip)">
+        Edit
+      </button>
+      <button class="btn btn-danger btn-sm" (click)="onDeleteTrip(trip._id!)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noTrips>
+  <p>No trips found.</p>
+</ng-template>
+

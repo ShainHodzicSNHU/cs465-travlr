@@ -2,24 +2,18 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
+const cors = require('cors');
 
 const app = express();
 
-/* -------------------- DATABASE SETUP -------------------- */
-
 require('./app_server/models/db');
-
-
 require('./app_api/models/travlr');
+require('./app_api/models/user'); 
 
-/* -------------------- ROUTES -------------------- */
-// HTML routes (server-side rendered pages)
+
 const routes = require('./app_server/routes/index');
-
-// API routes (JSON endpoints)
 const apiRoutes = require('./app_api/routes/index');
 
-/* -------------------- VIEW ENGINE SETUP -------------------- */
 app.engine(
   'hbs',
   engine({
@@ -29,19 +23,19 @@ app.engine(
     defaultLayout: 'layout',
   })
 );
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-/* -------------------- MIDDLEWARE -------------------- */
 app.use(morgan('dev'));
-
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* -------------------- ROUTE MOUNTING -------------------- */
-app.use('/', routes);        // HTML pages
-app.use('/api', apiRoutes);  // JSON API
+app.use('/', routes);
+app.use('/api', apiRoutes);
 
-/* -------------------- START SERVER -------------------- */
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Travlr server running at http://localhost:${port}`);
